@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+:root,
+[data-theme='light'] {
+  --canvas: #f6f6f3;
+  --surface: #ffffff;
+  --hair: #e4e6e9;
+  --contour-dot: #6f7e8e;
+  --contour-stroke: #b7c0cb;
+  --text-primary: #141821;
+  --text-secondary: #55606e;
+  --text-muted: #66707d;
+  --accent: #be3a2b;
+  --accent-hover: #cf4d3b;
+}
+
+[data-theme='dark'] {
+  --canvas: #0a0d12;
+  --surface: #0e121a;
+  --hair: #1b2430;
+  --contour-dot: #6e7c8b;
+  --contour-stroke: #28323f;
+  --text-primary: #eceef1;
+  --text-secondary: #9aa3b2;
+  --text-muted: #737d8b;
+  --accent: #be3a2b;
+  --accent-hover: #cf4d3b;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-hair: var(--hair);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-public-sans);
+  --font-mono: var(--font-label);
+}
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+  body {
+    background: var(--canvas);
+    color: var(--text-primary);
+    font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--accent);
+    color: #ffffff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Tailwind's built-in font-mono theme key doesn't take the @theme override the
+   way custom keys do, so pin the label font explicitly. */
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-label), ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  /* The contour motif reduced to one dimension: a dotted hairline. Shared by
+     ContourRule, the work-row dividers, and MDX <hr>. Theme-aware via the token. */
+  .contour-dots {
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--contour-dot) 0 2px,
+      transparent 2px 8px
+    );
+  }
+}

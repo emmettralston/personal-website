@@ -1,0 +1,25 @@
+---
+title: Domify
+slug: domify
+kind: engineering
+role: AI Engineering Intern
+org: Domify
+period: Summer 2026
+stack: [LangGraph, Python, Evaluation frameworks]
+summary: AI Engineering Intern. Developed a tool allowing compliance teams to test how rule changes affect Domify's verdicts, plus a regression suite for monitoring the AI pipeline's parameters and output.
+order: 1
+featured: true
+---
+
+At Domify I built two tools for the compliance platform. The first is a compliance
+playground that lets compliance officers test changes to their firm's criteria
+before they go live. It runs the updated criteria through Domify's annuities
+LangGraph pipeline and compares the results against the production baseline, both
+by structural diff and with an LLM acting as judge. It spans four repositories: a
+FastAPI service, a React interface, a gateway, and a read-only compute layer.
+
+The second is a regression test suite. It lets you swap the model or prompt at any
+step in a multi-agent LangGraph workflow, then runs the full pipeline against a
+baseline to check what changed. When it finds a failure, it reruns the case to tell
+a real regression apart from normal model noise, and reports the cost, latency, and
+how much the output's wording drifted.
