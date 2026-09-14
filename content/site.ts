@@ -10,7 +10,7 @@ export const site = {
     { label: 'Outside', href: '/outside' },
   ],
   socials: {
-    email: 'ejr7522@nyu.edu',
+    email: 'emmettralston@gmail.com',
     github: 'https://github.com/emmettralston',
     linkedin: 'https://www.linkedin.com/in/emmett-ralston',
   },
